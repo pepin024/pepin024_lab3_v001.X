@@ -33,8 +33,7 @@ int main(void){
     
     setup();
     
-    LATBbits.LATB11 = 1;
-    LATBbits.LATB9 = 0;
+    showChar7seg('0', 0);
     while(1)
        loop();
     return 1;

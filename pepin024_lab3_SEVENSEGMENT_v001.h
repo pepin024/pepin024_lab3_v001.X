@@ -68,6 +68,7 @@ extern "C" {
 #endif /* __cplusplus */
 
     void init7seg(void);
+    void showChar7seg(char myChar, int digit);
 
 #ifdef	__cplusplus
 }

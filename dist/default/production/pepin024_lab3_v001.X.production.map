@@ -59,9 +59,10 @@ Program Memory  [Origin = 0x200, Length = 0xa9fc]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0xce           0x135  (309)
-.text                        0x2ce                0x48            0x6c  (108)
+.text                        0x2ce                0xcc           0x132  (306)
+.dinit                       0x39a                0x14            0x1e  (30)
 
-                 Total program memory used (bytes):          0x1a1  (417) <1%
+                 Total program memory used (bytes):          0x285  (645) <1%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
@@ -74,8 +75,9 @@ Data Memory  [Origin = 0x800, Length = 0x2000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
+.data                        0x800                   0            0x12  (18)
 
-                 Total data memory used (bytes):              0  (0) 
+                 Total data memory used (bytes):           0x12  (18) <1%
 
 
 Dynamic Memory Usage
@@ -83,10 +85,18 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x800                              0x2000  (8192)
+stack                        0x812                              0x1fee  (8174)
 
-                 Maximum dynamic memory (bytes):         0x2000  (8192)
+                 Maximum dynamic memory (bytes):         0x1fee  (8174)
 
+
+External Symbols in Data Memory (by address):
+
+                    0x0800                  _fontTable
+
+External Symbols in Data Memory (by name):
+
+                    0x0800                  _fontTable
 
 External Symbols in Program Memory (by address):
 
@@ -96,9 +106,10 @@ External Symbols in Program Memory (by address):
                   0x000252                  __data_init_standard
                   0x0002c8                  __DefaultInterrupt
                   0x0002ce                  _init7seg
-                  0x0002f4                  _setup
-                  0x000304                  _main
-                  0x000310                  _loop
+                  0x0002f4                  _showChar7seg
+                  0x000376                  _setup
+                  0x000386                  _main
+                  0x000394                  _loop
 
 External Symbols in Program Memory (by name):
 
@@ -108,9 +119,10 @@ External Symbols in Program Memory (by name):
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
                   0x0002ce                  _init7seg
-                  0x000310                  _loop
-                  0x000304                  _main
-                  0x0002f4                  _setup
+                  0x000394                  _loop
+                  0x000386                  _main
+                  0x000376                  _setup
+                  0x0002f4                  _showChar7seg
 
 Memory Configuration
 
@@ -183,30 +195,31 @@ __CONFIG1
 .comment
  *(.comment)
 
-.debug_info       0x000000        0x50f
+.debug_info       0x000000        0x58f
  *(.debug_info)
- .debug_info      0x000000        0x3d1 build/default/production/pepin024_lab3_main_v001.o
- .debug_info      0x0003d1        0x13e build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_info      0x000000        0x243 build/default/production/pepin024_lab3_main_v001.o
+ .debug_info      0x000243        0x34c build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x10a
+.debug_abbrev     0x000000        0x1a6
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0xbe build/default/production/pepin024_lab3_main_v001.o
- .debug_abbrev    0x0000be         0x4c build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_abbrev    0x0000be         0xe8 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
 
-.debug_line       0x000000        0x15b
+.debug_line       0x000000        0x171
  *(.debug_line)
- .debug_line      0x000000         0xad build/default/production/pepin024_lab3_main_v001.o
- .debug_line      0x0000ad         0xae build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_line      0x000000         0xac build/default/production/pepin024_lab3_main_v001.o
+ .debug_line      0x0000ac         0xc5 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
 
-.debug_frame      0x000000         0x98
+.debug_frame      0x000000         0xb4
  *(.debug_frame)
  .debug_frame     0x000000         0x68 build/default/production/pepin024_lab3_main_v001.o
- .debug_frame     0x000068         0x30 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_frame     0x000068         0x4c build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
 
-.debug_str        0x000000         0x14
+.debug_str        0x000000         0x1e
  *(.debug_str)
- .debug_str       0x000000         0x14 build/default/production/pepin024_lab3_main_v001.o
+ .debug_str       0x000000          0xb build/default/production/pepin024_lab3_main_v001.o
+ .debug_str       0x00000b         0x13 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
 
 .debug_loc
  *(.debug_loc)
@@ -215,12 +228,12 @@ __CONFIG1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000         0x4d
+                  0x000000         0x6c
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x2e build/default/production/pepin024_lab3_main_v001.o
  .debug_pubnames
-                  0x00002e         0x1f build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+                  0x00002e         0x3e build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -814,13 +827,14 @@ LOAD c:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../lib\liblega-c-elf
 END GROUP
 OUTPUT(dist/default/production/pepin024_lab3_v001.X.production.elf elf32-pic30)
 LOAD default_isr
+LOAD data_init
 
 .debug_pubtypes
                   0x000030         0x62
  .debug_pubtypes
-                  0x000030         0x50 build/default/production/pepin024_lab3_main_v001.o
+                  0x000030         0x33 build/default/production/pepin024_lab3_main_v001.o
  .debug_pubtypes
-                  0x000080         0x12 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+                  0x000063         0x2f build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
 
 __c30_signature
                   0x000092         0x18
@@ -833,6 +847,10 @@ __c30_signature
  __c30_signature
                   0x0000a4          0x6 c:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../lib\liblega-pic30-elf.a(data_init_standard.o)
 
+.data               0x0800         0x12
+ .data              0x0800         0x12 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+                    0x0800                  _fontTable
+
 .config_JTAGEN    0x00abfe          0x2
  .config_JTAGEN
                   0x00abfe          0x2 build/default/production/pepin024_lab3_main_v001.o
@@ -840,10 +858,14 @@ __c30_signature
 .config_IESO      0x00abfc          0x2
  .config_IESO     0x00abfc          0x2 build/default/production/pepin024_lab3_main_v001.o
 
-.text             0x0002ce         0x48
- .text            0x0002ce         0x26 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+.text             0x0002ce         0xcc
+ .text            0x0002ce         0xa8 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
                   0x0002ce                  _init7seg
- .text            0x0002f4         0x22 build/default/production/pepin024_lab3_main_v001.o
-                  0x0002f4                  _setup
-                  0x000304                  _main
-                  0x000310                  _loop
+                  0x0002f4                  _showChar7seg
+ .text            0x000376         0x24 build/default/production/pepin024_lab3_main_v001.o
+                  0x000376                  _setup
+                  0x000386                  _main
+                  0x000394                  _loop
+
+.dinit            0x00039a         0x14
+ .dinit           0x00039a         0x14 data_init
