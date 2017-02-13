@@ -1,6 +1,7 @@
 #include <p24Fxxxx.h>
 #include <xc.h>
 #include "pepin024_lab3_SEVENSEGMENT_v001.h"
+#include "pepin024_lab3_delay_v001.h"
 
 // PIC24FJ64GA002 Configuration Bit Settings
 // CW1: FLASH CONFIGURATION WORD 1 (see PIC24 Family Reference Manual 24.1)
@@ -20,6 +21,7 @@
 #pragma config FNOSC = FRCPLL      // Oscillator Select (Fast RC Oscillator with PLL module (FRCPLL))
 
 void loop(void);
+void delay(int);
 
 void setup(void) {
     CLKDIVbits.RCDIV = 0;
@@ -40,6 +42,16 @@ int main(void){
 }
 
 void loop(void){
-    
+    char i;
+    for(i = '0'; i <= '9'; ++i){
+        showChar7seg(i, 0);
+        delay(500);
+    }
+    return;
+}
+
+void delay(int i){
+    for(i; i > 0; --i)
+        mSec();
     return;
 }
