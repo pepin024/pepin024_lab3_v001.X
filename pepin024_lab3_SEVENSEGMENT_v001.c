@@ -45,6 +45,12 @@ void showChar7seg(char myChar, int digit){
     else if((myChar >= 'A') && (myChar <= 'F')){
         LATB &= (fontTable[myChar - 'A' + 10] << 2);
     }
+    else if(myChar == '*'){
+        LATB &= (fontTable[16] << 2);
+    }
+    else if(myChar == '#'){
+        LATB &= (fontTable[17] << 2);
+    }
     else
         return;
     
