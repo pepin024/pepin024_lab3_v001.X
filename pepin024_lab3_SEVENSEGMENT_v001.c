@@ -37,19 +37,19 @@ void showChar7seg(char myChar, int digit){
     LATB &= 0b1111001111111111; //Set cathodes to low
     
     if((myChar >= '0') && (myChar <= '9')){
-        LATB &= (fontTable[myChar - '0'] << 2);
+        LATB &= ((fontTable[myChar - '0'] << 2) + 0xF003);
     }
     else if((myChar >= 'a') && (myChar <= 'f')){
-        LATB &= (fontTable[myChar - 'a' + 10] << 2);
+        LATB &= ((fontTable[myChar - 'a' + 10] << 2) + 0xF003);
     }
     else if((myChar >= 'A') && (myChar <= 'F')){
-        LATB &= (fontTable[myChar - 'A' + 10] << 2);
+        LATB &= ((fontTable[myChar - 'A' + 10] << 2) + 0xF003);
     }
     else if(myChar == '*'){
-        LATB &= (fontTable[16] << 2);
+        LATB &= ((fontTable[16] << 2) + 0xF003);
     }
     else if(myChar == '#'){
-        LATB &= (fontTable[17] << 2);
+        LATB &= ((fontTable[17] << 2) + 0xF003);
     }
     else
         return;
