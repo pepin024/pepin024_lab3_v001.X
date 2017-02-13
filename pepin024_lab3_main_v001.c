@@ -44,11 +44,10 @@ int main(void){
 }
 
 void loop(void){
-    char i;
-    for(i = '0'; i <= '9'; ++i){
-        showChar7seg(i, 0);
-        delay(500);
-    }
+    int i;
+    i = readKeyPadRAW();
+    showChar7seg(i + '0', 0);
+    delay(50);
     return;
 }
 

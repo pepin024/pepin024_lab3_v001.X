@@ -61,11 +61,11 @@ Program Memory  [Origin = 0x200, Length = 0xa9fc]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0xce           0x135  (309)
-.text                        0x2ce               0x17e           0x23d  (573)
-.dinit                       0x44c                0x14            0x1e  (30)
-.text                        0x460                 0x6             0x9  (9)
+.text                        0x2ce               0x1fc           0x2fa  (762)
+.dinit                       0x4ca                0x14            0x1e  (30)
+.text                        0x4de                 0x6             0x9  (9)
 
-                 Total program memory used (bytes):          0x399  (921) 1%
+                 Total program memory used (bytes):          0x456  (1110) 1%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
@@ -110,12 +110,13 @@ External Symbols in Program Memory (by address):
                   0x0002c8                  __DefaultInterrupt
                   0x0002ce                  _init7seg
                   0x0002f4                  _showChar7seg
-                  0x0003cc                  _setup
-                  0x0003de                  _main
-                  0x0003ec                  _loop
-                  0x00040c                  _delay
-                  0x000420                  _initKeyPad
-                  0x000460                  _mSec
+                  0x0003cc                  _initKeyPad
+                  0x0003f8                  _readKeyPadRAW
+                  0x00047e                  _setup
+                  0x000490                  _main
+                  0x00049e                  _loop
+                  0x0004b6                  _delay
+                  0x0004de                  _mSec
 
 External Symbols in Program Memory (by name):
 
@@ -124,13 +125,14 @@ External Symbols in Program Memory (by name):
                   0x000252                  __data_init_standard
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x00040c                  _delay
+                  0x0004b6                  _delay
                   0x0002ce                  _init7seg
-                  0x000420                  _initKeyPad
-                  0x0003ec                  _loop
-                  0x000460                  _mSec
-                  0x0003de                  _main
-                  0x0003cc                  _setup
+                  0x0003cc                  _initKeyPad
+                  0x00049e                  _loop
+                  0x0004de                  _mSec
+                  0x000490                  _main
+                  0x0003f8                  _readKeyPadRAW
+                  0x00047e                  _setup
                   0x0002f4                  _showChar7seg
 
 Memory Configuration
@@ -206,38 +208,39 @@ __CONFIG1
 .comment
  *(.comment)
 
-.debug_info       0x000000        0x80c
+.debug_info       0x000000        0xa92
  *(.debug_info)
- .debug_info      0x000000        0x2ad build/default/production/pepin024_lab3_main_v001.o
- .debug_info      0x0002ad        0x34c build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
- .debug_info      0x0005f9        0x178 build/default/production/pepin024_lab3_KEYPAD_v001.o
- .debug_info      0x000771         0x9b build/default/production/pepin024_lab3_delay_v001.o
+ .debug_info      0x000000        0x2be build/default/production/pepin024_lab3_main_v001.o
+ .debug_info      0x0002be        0x34c build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_info      0x00060a        0x3ed build/default/production/pepin024_lab3_KEYPAD_v001.o
+ .debug_info      0x0009f7         0x9b build/default/production/pepin024_lab3_delay_v001.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x24d
+.debug_abbrev     0x000000        0x2e1
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0xf4 build/default/production/pepin024_lab3_main_v001.o
  .debug_abbrev    0x0000f4         0xe8 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
- .debug_abbrev    0x0001dc         0x5d build/default/production/pepin024_lab3_KEYPAD_v001.o
- .debug_abbrev    0x000239         0x14 build/default/production/pepin024_lab3_delay_v001.o
+ .debug_abbrev    0x0001dc         0xf1 build/default/production/pepin024_lab3_KEYPAD_v001.o
+ .debug_abbrev    0x0002cd         0x14 build/default/production/pepin024_lab3_delay_v001.o
 
-.debug_line       0x000000        0x275
+.debug_line       0x000000        0x294
  *(.debug_line)
- .debug_line      0x000000         0xb6 build/default/production/pepin024_lab3_main_v001.o
- .debug_line      0x0000b6         0xcd build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
- .debug_line      0x000183         0xa9 build/default/production/pepin024_lab3_KEYPAD_v001.o
- .debug_line      0x00022c         0x49 build/default/production/pepin024_lab3_delay_v001.o
+ .debug_line      0x000000         0xb5 build/default/production/pepin024_lab3_main_v001.o
+ .debug_line      0x0000b5         0xcd build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_line      0x000182         0xc9 build/default/production/pepin024_lab3_KEYPAD_v001.o
+ .debug_line      0x00024b         0x49 build/default/production/pepin024_lab3_delay_v001.o
 
-.debug_frame      0x000000        0x100
+.debug_frame      0x000000        0x11c
  *(.debug_frame)
  .debug_frame     0x000000         0x84 build/default/production/pepin024_lab3_main_v001.o
  .debug_frame     0x000084         0x4c build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
- .debug_frame     0x0000d0         0x30 build/default/production/pepin024_lab3_KEYPAD_v001.o
+ .debug_frame     0x0000d0         0x4c build/default/production/pepin024_lab3_KEYPAD_v001.o
 
-.debug_str        0x000000         0x1e
+.debug_str        0x000000         0x2d
  *(.debug_str)
  .debug_str       0x000000          0xb build/default/production/pepin024_lab3_main_v001.o
  .debug_str       0x00000b         0x13 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_str       0x00001e          0xf build/default/production/pepin024_lab3_KEYPAD_v001.o
 
 .debug_loc
  *(.debug_loc)
@@ -246,14 +249,14 @@ __CONFIG1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000         0x97
+                  0x000000         0xa9
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x38 build/default/production/pepin024_lab3_main_v001.o
  .debug_pubnames
                   0x000038         0x3e build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
  .debug_pubnames
-                  0x000076         0x21 build/default/production/pepin024_lab3_KEYPAD_v001.o
+                  0x000076         0x33 build/default/production/pepin024_lab3_KEYPAD_v001.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -854,26 +857,26 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000060         0x74
+                  0x000060         0x91
  .debug_pubtypes
                   0x000060         0x33 build/default/production/pepin024_lab3_main_v001.o
  .debug_pubtypes
                   0x000093         0x2f build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
  .debug_pubtypes
-                  0x0000c2         0x12 build/default/production/pepin024_lab3_KEYPAD_v001.o
+                  0x0000c2         0x2f build/default/production/pepin024_lab3_KEYPAD_v001.o
 
 __c30_signature
-                  0x0000d4         0x1e
+                  0x0000f1         0x1e
  __c30_signature
-                  0x0000d4          0x6 build/default/production/pepin024_lab3_main_v001.o
+                  0x0000f1          0x6 build/default/production/pepin024_lab3_main_v001.o
  __c30_signature
-                  0x0000da          0x6 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+                  0x0000f7          0x6 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
  __c30_signature
-                  0x0000e0          0x6 build/default/production/pepin024_lab3_KEYPAD_v001.o
+                  0x0000fd          0x6 build/default/production/pepin024_lab3_KEYPAD_v001.o
  __c30_signature
-                  0x0000e6          0x6 c:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../lib\liblega-pic30-elf.a(crt0_standard.o)
+                  0x000103          0x6 c:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../lib\liblega-pic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x0000ec          0x6 c:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../lib\liblega-pic30-elf.a(data_init_standard.o)
+                  0x000109          0x6 c:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../lib\liblega-pic30-elf.a(data_init_standard.o)
 
 .data               0x0800         0x12
  .data              0x0800         0x12 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
@@ -886,21 +889,22 @@ __c30_signature
 .config_IESO      0x00abfc          0x2
  .config_IESO     0x00abfc          0x2 build/default/production/pepin024_lab3_main_v001.o
 
-.text             0x0002ce        0x17e
+.text             0x0002ce        0x1fc
  .text            0x0002ce         0xfe build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
                   0x0002ce                  _init7seg
                   0x0002f4                  _showChar7seg
- .text            0x0003cc         0x54 build/default/production/pepin024_lab3_main_v001.o
-                  0x0003cc                  _setup
-                  0x0003de                  _main
-                  0x0003ec                  _loop
-                  0x00040c                  _delay
- .text            0x000420         0x2c build/default/production/pepin024_lab3_KEYPAD_v001.o
-                  0x000420                  _initKeyPad
+ .text            0x0003cc         0xb2 build/default/production/pepin024_lab3_KEYPAD_v001.o
+                  0x0003cc                  _initKeyPad
+                  0x0003f8                  _readKeyPadRAW
+ .text            0x00047e         0x4c build/default/production/pepin024_lab3_main_v001.o
+                  0x00047e                  _setup
+                  0x000490                  _main
+                  0x00049e                  _loop
+                  0x0004b6                  _delay
 
-.dinit            0x00044c         0x14
- .dinit           0x00044c         0x14 data_init
+.dinit            0x0004ca         0x14
+ .dinit           0x0004ca         0x14 data_init
 
-.text             0x000460          0x6
- .text            0x000460          0x6 build/default/production/pepin024_lab3_delay_v001.o
-                  0x000460                  _mSec
+.text             0x0004de          0x6
+ .text            0x0004de          0x6 build/default/production/pepin024_lab3_delay_v001.o
+                  0x0004de                  _mSec

@@ -71,6 +71,7 @@ extern "C" {
     // linkage so the functions can be used by the c code. 
     
     void initKeyPad(void);
+    int readKeyPadRAW(void
 
 #ifdef	__cplusplus
 }
