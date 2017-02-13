@@ -5,21 +5,21 @@
 
 char fontTable[] = {
     0b00000011,
-    0b10010001,
+    0b10011111,
     0b00100101,
     0b00001101,
     0b10011001,
     0b01001001,
-    0b00000100,
+    0b01000000,
     0b00011111,
     0b00000001,
     0b00011000,
     0b00010001,
     0b11000001,
-    0b00001111,
+    0b01100011,
     0b10000101,
     0b01100001,
-    0b00011101,
+    0b01110001,
     0b11111110,
     0b00000000
 };
@@ -40,15 +40,18 @@ void showChar7seg(char myChar, int digit){
         LATB &= (fontTable[myChar - '0'] << 2);
     }
     else if((myChar >= 'a') && (myChar <= 'f')){
-        LATB &= (fontTable[myChar - 'a'] << 2);
+        LATB &= (fontTable[myChar - 'a' + 10] << 2);
+    }
+    else if((myChar >= 'A') && (myChar <= 'F')){
+        LATB &= (fontTable[myChar - 'A' + 10] << 2);
     }
     else
         return;
     
     if(digit == 0)
-        LATBbits.LATB10 = 1;
-    else if(digit == 1)
         LATBbits.LATB11 = 1;
+    else if(digit == 1)
+        LATBbits.LATB10 = 1;
     
     return;
 }

@@ -59,10 +59,10 @@ Program Memory  [Origin = 0x200, Length = 0xa9fc]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0xce           0x135  (309)
-.text                        0x2ce                0xcc           0x132  (306)
-.dinit                       0x39a                0x14            0x1e  (30)
+.text                        0x2ce                0xf2           0x16b  (363)
+.dinit                       0x3c0                0x14            0x1e  (30)
 
-                 Total program memory used (bytes):          0x285  (645) <1%
+                 Total program memory used (bytes):          0x2be  (702) 1%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
@@ -107,9 +107,9 @@ External Symbols in Program Memory (by address):
                   0x0002c8                  __DefaultInterrupt
                   0x0002ce                  _init7seg
                   0x0002f4                  _showChar7seg
-                  0x000376                  _setup
-                  0x000386                  _main
-                  0x000394                  _loop
+                  0x00039c                  _setup
+                  0x0003ac                  _main
+                  0x0003ba                  _loop
 
 External Symbols in Program Memory (by name):
 
@@ -119,9 +119,9 @@ External Symbols in Program Memory (by name):
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
                   0x0002ce                  _init7seg
-                  0x000394                  _loop
-                  0x000386                  _main
-                  0x000376                  _setup
+                  0x0003ba                  _loop
+                  0x0003ac                  _main
+                  0x00039c                  _setup
                   0x0002f4                  _showChar7seg
 
 Memory Configuration
@@ -206,10 +206,10 @@ __CONFIG1
  .debug_abbrev    0x000000         0xbe build/default/production/pepin024_lab3_main_v001.o
  .debug_abbrev    0x0000be         0xe8 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
 
-.debug_line       0x000000        0x171
+.debug_line       0x000000        0x174
  *(.debug_line)
  .debug_line      0x000000         0xac build/default/production/pepin024_lab3_main_v001.o
- .debug_line      0x0000ac         0xc5 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_line      0x0000ac         0xc8 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
 
 .debug_frame      0x000000         0xb4
  *(.debug_frame)
@@ -858,14 +858,14 @@ __c30_signature
 .config_IESO      0x00abfc          0x2
  .config_IESO     0x00abfc          0x2 build/default/production/pepin024_lab3_main_v001.o
 
-.text             0x0002ce         0xcc
- .text            0x0002ce         0xa8 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+.text             0x0002ce         0xf2
+ .text            0x0002ce         0xce build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
                   0x0002ce                  _init7seg
                   0x0002f4                  _showChar7seg
- .text            0x000376         0x24 build/default/production/pepin024_lab3_main_v001.o
-                  0x000376                  _setup
-                  0x000386                  _main
-                  0x000394                  _loop
+ .text            0x00039c         0x24 build/default/production/pepin024_lab3_main_v001.o
+                  0x00039c                  _setup
+                  0x0003ac                  _main
+                  0x0003ba                  _loop
 
-.dinit            0x00039a         0x14
- .dinit           0x00039a         0x14 data_init
+.dinit            0x0003c0         0x14
+ .dinit           0x0003c0         0x14 data_init
