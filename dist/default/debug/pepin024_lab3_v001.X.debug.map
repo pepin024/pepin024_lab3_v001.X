@@ -6,7 +6,7 @@ Tool Name:
 Command:
   -p24FJ64GA002 \
   -o \
-  dist/default/production/pepin024_lab3_v001.X.production.elf \
+  dist/default/debug/pepin024_lab3_v001.X.debug.elf \
   -Lc:/program files (x86)/microchip/xc16/v1.30/bin/bin/.. \
   -Lc:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../lib \
   -Lc:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../support/PIC24E/gld \
@@ -15,12 +15,20 @@ Command:
   -Lc:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../support/dsPIC30F/gld \
   -Lc:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../support/dsPIC33E/gld \
   -Lc:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../support/dsPIC33F/gld \
-  build/default/production/pepin024_lab3_main_v001.o \
-  build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o \
-  build/default/production/pepin024_lab3_KEYPAD_v001.o \
-  build/default/production/pepin024_lab3_delay_v001.o \
+  build/default/debug/pepin024_lab3_main_v001.o \
+  build/default/debug/pepin024_lab3_SEVENSEGMENT_v001.o \
+  build/default/debug/pepin024_lab3_KEYPAD_v001.o \
+  build/default/debug/pepin024_lab3_delay_v001.o \
+  -TC:\\Users\\pepin\\AppData\\Local\\Temp\\tmp00002a48.00 \
+  -TC:\\Users\\pepin\\AppData\\Local\\Temp\\tmp00002a48.01 \
+  -TC:\\Users\\pepin\\AppData\\Local\\Temp\\tmp00002a48.02 \
+  -TC:\\Users\\pepin\\AppData\\Local\\Temp\\tmp00002a48.03 \
+  -TC:\\Users\\pepin\\AppData\\Local\\Temp\\tmp00002a48.04 \
   --defsym=__MPLAB_BUILD=1 \
-  -Tp24FJ64GA002.gld.00 \
+  --defsym=__MPLAB_DEBUG=1 \
+  --defsym=__DEBUG=1 \
+  --defsym=__MPLAB_DEBUGGER_PK3=1 \
+  -Tp24FJ64GA002.gld.05 \
   --stack=16 \
   --check-sections \
   --data-init \
@@ -32,10 +40,10 @@ Command:
   --stackguard=16 \
   --no-force-link \
   --smart-io \
-  -Map=dist/default/production/pepin024_lab3_v001.X.production.map \
+  -Map=dist/default/debug/pepin024_lab3_v001.X.debug.map \
   --report-mem \
   --memorysummary \
-  dist/default/production/memoryfile.xml \
+  dist/default/debug/memoryfile.xml \
   -start-group \
   --library=lega-pic30-elf \
   --library=m-elf \
@@ -78,9 +86,14 @@ Data Memory  [Origin = 0x800, Length = 0x2000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.data                        0x800                   0            0x12  (18)
+reserve_data_0x800           0x800                0x20            0x20  (32)
+reserve_data_0x820           0x820                 0x2             0x2  (2)
+reserve_data_0x822           0x822                 0x2             0x2  (2)
+reserve_data_0x824           0x824                 0x2             0x2  (2)
+reserve_data_0x826           0x826                0x2a            0x2a  (42)
+.data                        0x850                   0            0x12  (18)
 
-                 Total data memory used (bytes):           0x12  (18) <1%
+                 Total data memory used (bytes):           0x62  (98) 1%
 
 
 Dynamic Memory Usage
@@ -88,18 +101,18 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x812                              0x1fee  (8174)
+stack                        0x862                              0x1f9e  (8094)
 
-                 Maximum dynamic memory (bytes):         0x1fee  (8174)
+                 Maximum dynamic memory (bytes):         0x1f9e  (8094)
 
 
 External Symbols in Data Memory (by address):
 
-                    0x0800                  _fontTable
+                    0x0850                  _fontTable
 
 External Symbols in Data Memory (by name):
 
-                    0x0800                  _fontTable
+                    0x0850                  _fontTable
 
 External Symbols in Program Memory (by address):
 
@@ -150,11 +163,39 @@ CONFIG1          0x00abfe           0x000002
 
 Linker script and memory map
 
-LOAD build/default/production/pepin024_lab3_main_v001.o
-LOAD build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
-LOAD build/default/production/pepin024_lab3_KEYPAD_v001.o
-LOAD build/default/production/pepin024_lab3_delay_v001.o
+LOAD build/default/debug/pepin024_lab3_main_v001.o
+LOAD build/default/debug/pepin024_lab3_SEVENSEGMENT_v001.o
+LOAD build/default/debug/pepin024_lab3_KEYPAD_v001.o
+LOAD build/default/debug/pepin024_lab3_delay_v001.o
+
+reserve_data_0x800
+                    0x0800         0x20
+                    0x0820                  . = 0x20
+ *fill*             0x0800         0x2000
+
+reserve_data_0x820
+                    0x0820          0x2
+                    0x0822                  . = 0x2
+ *fill*             0x0820          0x200
+
+reserve_data_0x822
+                    0x0822          0x2
+                    0x0824                  . = 0x2
+ *fill*             0x0822          0x200
+
+reserve_data_0x824
+                    0x0824          0x2
+                    0x0826                  . = 0x2
+ *fill*             0x0824          0x200
+
+reserve_data_0x826
+                    0x0826         0x2a
+                    0x0850                  . = 0x2a
+ *fill*             0x0826         0x2a00
                     0x0001                  __MPLAB_BUILD = 0x1
+                    0x0001                  __MPLAB_DEBUG = 0x1
+                    0x0001                  __DEBUG = 0x1
+                    0x0001                  __MPLAB_DEBUGGER_PK3 = 0x1
 LOAD pPIC24Fxxx
 LOAD c:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../lib\libfx-elf.a
                     0xabfc                  __CONFIG2 = 0xabfc
@@ -210,37 +251,37 @@ __CONFIG1
 
 .debug_info       0x000000        0xab0
  *(.debug_info)
- .debug_info      0x000000        0x2be build/default/production/pepin024_lab3_main_v001.o
- .debug_info      0x0002be        0x34c build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
- .debug_info      0x00060a        0x40b build/default/production/pepin024_lab3_KEYPAD_v001.o
- .debug_info      0x000a15         0x9b build/default/production/pepin024_lab3_delay_v001.o
+ .debug_info      0x000000        0x2be build/default/debug/pepin024_lab3_main_v001.o
+ .debug_info      0x0002be        0x34c build/default/debug/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_info      0x00060a        0x40b build/default/debug/pepin024_lab3_KEYPAD_v001.o
+ .debug_info      0x000a15         0x9b build/default/debug/pepin024_lab3_delay_v001.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x2e1
  *(.debug_abbrev)
- .debug_abbrev    0x000000         0xf4 build/default/production/pepin024_lab3_main_v001.o
- .debug_abbrev    0x0000f4         0xe8 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
- .debug_abbrev    0x0001dc         0xf1 build/default/production/pepin024_lab3_KEYPAD_v001.o
- .debug_abbrev    0x0002cd         0x14 build/default/production/pepin024_lab3_delay_v001.o
+ .debug_abbrev    0x000000         0xf4 build/default/debug/pepin024_lab3_main_v001.o
+ .debug_abbrev    0x0000f4         0xe8 build/default/debug/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_abbrev    0x0001dc         0xf1 build/default/debug/pepin024_lab3_KEYPAD_v001.o
+ .debug_abbrev    0x0002cd         0x14 build/default/debug/pepin024_lab3_delay_v001.o
 
 .debug_line       0x000000        0x296
  *(.debug_line)
- .debug_line      0x000000         0xb4 build/default/production/pepin024_lab3_main_v001.o
- .debug_line      0x0000b4         0xce build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
- .debug_line      0x000182         0xcb build/default/production/pepin024_lab3_KEYPAD_v001.o
- .debug_line      0x00024d         0x49 build/default/production/pepin024_lab3_delay_v001.o
+ .debug_line      0x000000         0xb4 build/default/debug/pepin024_lab3_main_v001.o
+ .debug_line      0x0000b4         0xce build/default/debug/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_line      0x000182         0xcb build/default/debug/pepin024_lab3_KEYPAD_v001.o
+ .debug_line      0x00024d         0x49 build/default/debug/pepin024_lab3_delay_v001.o
 
 .debug_frame      0x000000        0x11c
  *(.debug_frame)
- .debug_frame     0x000000         0x84 build/default/production/pepin024_lab3_main_v001.o
- .debug_frame     0x000084         0x4c build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
- .debug_frame     0x0000d0         0x4c build/default/production/pepin024_lab3_KEYPAD_v001.o
+ .debug_frame     0x000000         0x84 build/default/debug/pepin024_lab3_main_v001.o
+ .debug_frame     0x000084         0x4c build/default/debug/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_frame     0x0000d0         0x4c build/default/debug/pepin024_lab3_KEYPAD_v001.o
 
 .debug_str        0x000000         0x2d
  *(.debug_str)
- .debug_str       0x000000          0xb build/default/production/pepin024_lab3_main_v001.o
- .debug_str       0x00000b         0x13 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
- .debug_str       0x00001e          0xf build/default/production/pepin024_lab3_KEYPAD_v001.o
+ .debug_str       0x000000          0xb build/default/debug/pepin024_lab3_main_v001.o
+ .debug_str       0x00000b         0x13 build/default/debug/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_str       0x00001e          0xf build/default/debug/pepin024_lab3_KEYPAD_v001.o
 
 .debug_loc
  *(.debug_loc)
@@ -252,11 +293,11 @@ __CONFIG1
                   0x000000         0xa9
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x38 build/default/production/pepin024_lab3_main_v001.o
+                  0x000000         0x38 build/default/debug/pepin024_lab3_main_v001.o
  .debug_pubnames
-                  0x000038         0x3e build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+                  0x000038         0x3e build/default/debug/pepin024_lab3_SEVENSEGMENT_v001.o
  .debug_pubnames
-                  0x000076         0x33 build/default/production/pepin024_lab3_KEYPAD_v001.o
+                  0x000076         0x33 build/default/debug/pepin024_lab3_KEYPAD_v001.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -264,13 +305,13 @@ __CONFIG1
 .debug_aranges    0x000000         0x60
  *(.debug_aranges)
  .debug_aranges
-                  0x000000         0x18 build/default/production/pepin024_lab3_main_v001.o
+                  0x000000         0x18 build/default/debug/pepin024_lab3_main_v001.o
  .debug_aranges
-                  0x000018         0x18 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+                  0x000018         0x18 build/default/debug/pepin024_lab3_SEVENSEGMENT_v001.o
  .debug_aranges
-                  0x000030         0x18 build/default/production/pepin024_lab3_KEYPAD_v001.o
+                  0x000030         0x18 build/default/debug/pepin024_lab3_KEYPAD_v001.o
  .debug_aranges
-                  0x000048         0x18 build/default/production/pepin024_lab3_delay_v001.o
+                  0x000048         0x18 build/default/debug/pepin024_lab3_delay_v001.o
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -852,51 +893,51 @@ LOAD c:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../lib\liblega-pic30
 LOAD c:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
-OUTPUT(dist/default/production/pepin024_lab3_v001.X.production.elf elf32-pic30)
+OUTPUT(dist/default/debug/pepin024_lab3_v001.X.debug.elf elf32-pic30)
 LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
                   0x000060         0x91
  .debug_pubtypes
-                  0x000060         0x33 build/default/production/pepin024_lab3_main_v001.o
+                  0x000060         0x33 build/default/debug/pepin024_lab3_main_v001.o
  .debug_pubtypes
-                  0x000093         0x2f build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+                  0x000093         0x2f build/default/debug/pepin024_lab3_SEVENSEGMENT_v001.o
  .debug_pubtypes
-                  0x0000c2         0x2f build/default/production/pepin024_lab3_KEYPAD_v001.o
+                  0x0000c2         0x2f build/default/debug/pepin024_lab3_KEYPAD_v001.o
 
 __c30_signature
                   0x0000f1         0x1e
  __c30_signature
-                  0x0000f1          0x6 build/default/production/pepin024_lab3_main_v001.o
+                  0x0000f1          0x6 build/default/debug/pepin024_lab3_main_v001.o
  __c30_signature
-                  0x0000f7          0x6 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+                  0x0000f7          0x6 build/default/debug/pepin024_lab3_SEVENSEGMENT_v001.o
  __c30_signature
-                  0x0000fd          0x6 build/default/production/pepin024_lab3_KEYPAD_v001.o
+                  0x0000fd          0x6 build/default/debug/pepin024_lab3_KEYPAD_v001.o
  __c30_signature
                   0x000103          0x6 c:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../lib\liblega-pic30-elf.a(crt0_standard.o)
  __c30_signature
                   0x000109          0x6 c:/program files (x86)/microchip/xc16/v1.30/bin/bin/../../lib\liblega-pic30-elf.a(data_init_standard.o)
 
-.data               0x0800         0x12
- .data              0x0800         0x12 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
-                    0x0800                  _fontTable
+.data               0x0850         0x12
+ .data              0x0850         0x12 build/default/debug/pepin024_lab3_SEVENSEGMENT_v001.o
+                    0x0850                  _fontTable
 
 .config_JTAGEN    0x00abfe          0x2
  .config_JTAGEN
-                  0x00abfe          0x2 build/default/production/pepin024_lab3_main_v001.o
+                  0x00abfe          0x2 build/default/debug/pepin024_lab3_main_v001.o
 
 .config_IESO      0x00abfc          0x2
- .config_IESO     0x00abfc          0x2 build/default/production/pepin024_lab3_main_v001.o
+ .config_IESO     0x00abfc          0x2 build/default/debug/pepin024_lab3_main_v001.o
 
 .text             0x0002ce        0x22a
- .text            0x0002ce        0x112 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+ .text            0x0002ce        0x112 build/default/debug/pepin024_lab3_SEVENSEGMENT_v001.o
                   0x0002ce                  _init7seg
                   0x0002f4                  _showChar7seg
- .text            0x0003e0         0xd0 build/default/production/pepin024_lab3_KEYPAD_v001.o
+ .text            0x0003e0         0xd0 build/default/debug/pepin024_lab3_KEYPAD_v001.o
                   0x0003e0                  _initKeyPad
                   0x000412                  _readKeyPadRAW
- .text            0x0004b0         0x48 build/default/production/pepin024_lab3_main_v001.o
+ .text            0x0004b0         0x48 build/default/debug/pepin024_lab3_main_v001.o
                   0x0004b0                  _setup
                   0x0004c2                  _main
                   0x0004d0                  _loop
@@ -906,5 +947,5 @@ __c30_signature
  .dinit           0x0004f8         0x14 data_init
 
 .text             0x00050c          0x6
- .text            0x00050c          0x6 build/default/production/pepin024_lab3_delay_v001.o
+ .text            0x00050c          0x6 build/default/debug/pepin024_lab3_delay_v001.o
                   0x00050c                  _mSec

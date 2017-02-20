@@ -14,9 +14,10 @@
 
 
 // CW2: FLASH CONFIGURATION WORD 2 (see PIC24 Family Reference Manual 24.1)
+#pragma config POSCMOD = NONE
 #pragma config I2C1SEL = PRI       // I2C1 Pin Location Select (Use default SCL1/SDA1 pins)
 #pragma config IOL1WAY = OFF       // IOLOCK Protection (IOLOCK may be changed via unlocking seq)
-#pragma config OSCIOFNC = OFF       // Primary Oscillator I/O Function (CLKO/RC15 functions as I/O pin)
+#pragma config OSCIOFNC = ON       // Primary Oscillator I/O Function (CLKO/RC15 functions as I/O pin)
 #pragma config FCKSM = CSECME      // Clock Switching and Monitor (Clock switching is enabled, 
                                        // Fail-Safe Clock Monitor is enabled)
 #pragma config FNOSC = FRCPLL      // Oscillator Select (Fast RC Oscillator with PLL module (FRCPLL))
@@ -45,10 +46,8 @@ int main(void){
 
 void loop(void){
     int i;
-    for(i=0; i <= 9; ++i){
-        showChar7seg(i + '0', 0);
-        delay(500);
-    }
+    i = readKeyPadRAW();
+    showChar7seg(i + '0', 0);
     return;
 }
 

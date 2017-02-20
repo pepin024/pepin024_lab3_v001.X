@@ -20,7 +20,7 @@ int readKeyPadRAW(void){
     int state;
     int row;
     LATBbits.LATB15 = 0;
-    if((PORTA & 0b01111) != 0b1111){
+    if((PORTA & 0b1111) != 0b1111){
         delay(2);
         state = (PORTA & 0b1111);
         row = 0;

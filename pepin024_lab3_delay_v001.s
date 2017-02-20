@@ -14,3 +14,5 @@ _mSec:
     REPEAT #15993
     NOP
     RETURN
+    
+    .end
