@@ -53,7 +53,11 @@ int readKeyPadRAW(void){
     
     //Pack state of column into 2 bit number
     int i;
-    for(i = 0; (state & (1 << i)) == 0; ++i){  
+    int j;
+    j = row << 2;
+    for(i = 0; i < 4; ++i){ 
+        if((state & (1 << i)) == 0)
+          return j + i;  
     }
-    return (row << 2) + i;
+    
 }
