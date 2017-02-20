@@ -3,7 +3,7 @@
 
 
 
-char fontTable[] = {
+unsigned char fontTable[] = {
     0b00000011,
     0b10011111,
     0b00100101,
