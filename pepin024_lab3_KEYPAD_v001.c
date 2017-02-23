@@ -2,6 +2,12 @@
 #include <xc.h>
 #include "pepin024_lab3_delay_v002.h"
 
+#define NOKEY 255
+
+int rowMask[] = {0b0111, 0b1011, 0b1101, 0b1110};
+int colMask[] = {NOKEY,NOKEY,NOKEY,NOKEY,NOKEY,NOKEY,NOKEY,3,
+        NOKEY,NOKEY,NOKEY,2,NOKEY,1,0,NOKEY};
+
 void initKeyPad(void){
     AD1PCFG |= 0x1E03;  //Set pins to digital
     CNPU1 |= 0x000C; //Activates pullup resistors for columns
@@ -60,4 +66,15 @@ int readKeyPadRAW(void){
           return j + i;  
     }
     return 0;
+}
+
+int scanRow(int row){
+    if((row > 3) || (row < 0))
+        row = 0;
+    LATB |= 0xF000;
+    LATB &= 0x0FFF + (rowMask[row] << 12);
+    int key = PORTA & 0x000F;
+    key = colMask[key];
+    return (4*row) + key;
+    
 }

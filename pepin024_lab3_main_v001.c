@@ -41,10 +41,7 @@ int main(void){
     setup();
     
     showChar7seg('0', 0);
-    LATBbits.LATB15 = 1;
-    LATBbits.LATB14 = 0;
-    LATBbits.LATB13 = 1;
-    LATBbits.LATB12 = 1;
+    
     while(1)
        loop();
     return 1;
@@ -52,19 +49,8 @@ int main(void){
 
 void loop(void){
     int i=0;
-    
-    //i = readKeyPadRAW();
-    if(PORTA == 0b1111)
-        i = 0;
-    if(PORTA == 0b1110)
-        i=1;
-    if(PORTA == 0b1101)
-        i=2;
-    if(PORTA == 0b1011)
-        i=3;
-    if(PORTA == 0b0111)
-        i=4;
-    asm("nop");
+    int foo = 0;
+    foo = scanRow(0);
     showChar7seg(i + '0', 0);
     return;
 }
