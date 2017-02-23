@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=pepin024_lab3_main_v001.c pepin024_lab3_SEVENSEGMENT_v001.c pepin024_lab3_KEYPAD_v001.c pepin024_lab3_delay_v001.s
+SOURCEFILES_QUOTED_IF_SPACED=pepin024_lab3_main_v001.c pepin024_lab3_SEVENSEGMENT_v001.c pepin024_lab3_KEYPAD_v001.c pepin024_lab3_delay.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/pepin024_lab3_main_v001.o ${OBJECTDIR}/pepin024_lab3_SEVENSEGMENT_v001.o ${OBJECTDIR}/pepin024_lab3_KEYPAD_v001.o ${OBJECTDIR}/pepin024_lab3_delay_v001.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/pepin024_lab3_main_v001.o.d ${OBJECTDIR}/pepin024_lab3_SEVENSEGMENT_v001.o.d ${OBJECTDIR}/pepin024_lab3_KEYPAD_v001.o.d ${OBJECTDIR}/pepin024_lab3_delay_v001.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/pepin024_lab3_main_v001.o ${OBJECTDIR}/pepin024_lab3_SEVENSEGMENT_v001.o ${OBJECTDIR}/pepin024_lab3_KEYPAD_v001.o ${OBJECTDIR}/pepin024_lab3_delay.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/pepin024_lab3_main_v001.o.d ${OBJECTDIR}/pepin024_lab3_SEVENSEGMENT_v001.o.d ${OBJECTDIR}/pepin024_lab3_KEYPAD_v001.o.d ${OBJECTDIR}/pepin024_lab3_delay.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/pepin024_lab3_main_v001.o ${OBJECTDIR}/pepin024_lab3_SEVENSEGMENT_v001.o ${OBJECTDIR}/pepin024_lab3_KEYPAD_v001.o ${OBJECTDIR}/pepin024_lab3_delay_v001.o
+OBJECTFILES=${OBJECTDIR}/pepin024_lab3_main_v001.o ${OBJECTDIR}/pepin024_lab3_SEVENSEGMENT_v001.o ${OBJECTDIR}/pepin024_lab3_KEYPAD_v001.o ${OBJECTDIR}/pepin024_lab3_delay.o
 
 # Source Files
-SOURCEFILES=pepin024_lab3_main_v001.c pepin024_lab3_SEVENSEGMENT_v001.c pepin024_lab3_KEYPAD_v001.c pepin024_lab3_delay_v001.s
+SOURCEFILES=pepin024_lab3_main_v001.c pepin024_lab3_SEVENSEGMENT_v001.c pepin024_lab3_KEYPAD_v001.c pepin024_lab3_delay.c
 
 
 CFLAGS=
@@ -109,6 +109,13 @@ ${OBJECTDIR}/pepin024_lab3_KEYPAD_v001.o: pepin024_lab3_KEYPAD_v001.c  nbproject
 	${MP_CC} $(MP_EXTRA_CC_PRE)  pepin024_lab3_KEYPAD_v001.c  -o ${OBJECTDIR}/pepin024_lab3_KEYPAD_v001.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/pepin024_lab3_KEYPAD_v001.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/pepin024_lab3_KEYPAD_v001.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/pepin024_lab3_delay.o: pepin024_lab3_delay.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pepin024_lab3_delay.o.d 
+	@${RM} ${OBJECTDIR}/pepin024_lab3_delay.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  pepin024_lab3_delay.c  -o ${OBJECTDIR}/pepin024_lab3_delay.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/pepin024_lab3_delay.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/pepin024_lab3_delay.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 else
 ${OBJECTDIR}/pepin024_lab3_main_v001.o: pepin024_lab3_main_v001.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -131,26 +138,19 @@ ${OBJECTDIR}/pepin024_lab3_KEYPAD_v001.o: pepin024_lab3_KEYPAD_v001.c  nbproject
 	${MP_CC} $(MP_EXTRA_CC_PRE)  pepin024_lab3_KEYPAD_v001.c  -o ${OBJECTDIR}/pepin024_lab3_KEYPAD_v001.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/pepin024_lab3_KEYPAD_v001.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/pepin024_lab3_KEYPAD_v001.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/pepin024_lab3_delay.o: pepin024_lab3_delay.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pepin024_lab3_delay.o.d 
+	@${RM} ${OBJECTDIR}/pepin024_lab3_delay.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  pepin024_lab3_delay.c  -o ${OBJECTDIR}/pepin024_lab3_delay.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/pepin024_lab3_delay.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/pepin024_lab3_delay.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 endif
 
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/pepin024_lab3_delay_v001.o: pepin024_lab3_delay_v001.s  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/pepin024_lab3_delay_v001.o.d 
-	@${RM} ${OBJECTDIR}/pepin024_lab3_delay_v001.o 
-	${MP_CC} $(MP_EXTRA_AS_PRE)  pepin024_lab3_delay_v001.s  -o ${OBJECTDIR}/pepin024_lab3_delay_v001.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,-MD,"${OBJECTDIR}/pepin024_lab3_delay_v001.o.d",--defsym=__MPLAB_BUILD=1,--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1,-g,--no-relax$(MP_EXTRA_AS_POST)
-	@${FIXDEPS} "${OBJECTDIR}/pepin024_lab3_delay_v001.o.d"  $(SILENT)  -rsi ${MP_CC_DIR}../  
-	
 else
-${OBJECTDIR}/pepin024_lab3_delay_v001.o: pepin024_lab3_delay_v001.s  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/pepin024_lab3_delay_v001.o.d 
-	@${RM} ${OBJECTDIR}/pepin024_lab3_delay_v001.o 
-	${MP_CC} $(MP_EXTRA_AS_PRE)  pepin024_lab3_delay_v001.s  -o ${OBJECTDIR}/pepin024_lab3_delay_v001.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  -Wa,-MD,"${OBJECTDIR}/pepin024_lab3_delay_v001.o.d",--defsym=__MPLAB_BUILD=1,-g,--no-relax$(MP_EXTRA_AS_POST)
-	@${FIXDEPS} "${OBJECTDIR}/pepin024_lab3_delay_v001.o.d"  $(SILENT)  -rsi ${MP_CC_DIR}../  
-	
 endif
 
 # ------------------------------------------------------------------------------------

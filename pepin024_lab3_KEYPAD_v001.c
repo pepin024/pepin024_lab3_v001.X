@@ -1,6 +1,6 @@
 #include <p24Fxxxx.h>
 #include <xc.h>
-#include "pepin024_lab3_delay_v001.h"
+#include "pepin024_lab3_delay_v002.h"
 
 void initKeyPad(void){
     AD1PCFG |= 0x1E03;  //Set pins to digital
@@ -59,5 +59,5 @@ int readKeyPadRAW(void){
         if((state & (1 << i)) == 0)
           return j + i;  
     }
-    
+    return 0;
 }

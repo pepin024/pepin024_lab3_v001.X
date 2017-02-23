@@ -1,7 +1,7 @@
 #include <p24Fxxxx.h>
 #include <xc.h>
 #include "pepin024_lab3_SEVENSEGMENT_v001.h"
-#include "pepin024_lab3_delay_v001.h"
+#include "pepin024_lab3_delay_v002.h"
 #include "pepin024_lab3_KEYPAD_v001.h"
 
 // PIC24FJ64GA002 Configuration Bit Settings
@@ -23,7 +23,7 @@
 #pragma config FNOSC = FRCPLL      // Oscillator Select (Fast RC Oscillator with PLL module (FRCPLL))
 
 void loop(void);
-void delay(int);
+
 
 int lastkey = 0;
 
@@ -66,11 +66,5 @@ void loop(void){
         i=4;
     asm("nop");
     showChar7seg(i + '0', 0);
-    return;
-}
-
-void delay(int i){
-    for(i; i > 0; --i)
-        mSec();
     return;
 }

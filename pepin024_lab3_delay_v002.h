@@ -67,11 +67,10 @@
 extern "C" {
 #endif /* __cplusplus */
 
+    void mSec(void);
+    void delay(unsigned int);
     // TODO If C++ is being used, regular C code needs function names to have C 
     // linkage so the functions can be used by the c code. 
-    
-  void initKeyPad(void);
-  int readKeyPadRAW(void);  
 
 #ifdef	__cplusplus
 }
