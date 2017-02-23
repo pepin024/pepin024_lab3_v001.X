@@ -210,20 +210,20 @@ __CONFIG1
 .comment
  *(.comment)
 
-.debug_info       0x000000        0xdc5
+.debug_info       0x000000        0xdaa
  *(.debug_info)
- .debug_info      0x000000        0x438 build/default/production/pepin024_lab3_main_v001.o
- .debug_info      0x000438        0x35d build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
- .debug_info      0x000795        0x3a7 build/default/production/pepin024_lab3_KEYPAD_v001.o
- .debug_info      0x000b3c        0x289 build/default/production/pepin024_lab3_delay.o
+ .debug_info      0x000000        0x41d build/default/production/pepin024_lab3_main_v001.o
+ .debug_info      0x00041d        0x35d build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_info      0x00077a        0x3a7 build/default/production/pepin024_lab3_KEYPAD_v001.o
+ .debug_info      0x000b21        0x289 build/default/production/pepin024_lab3_delay.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x36a
+.debug_abbrev     0x000000        0x369
  *(.debug_abbrev)
- .debug_abbrev    0x000000        0x107 build/default/production/pepin024_lab3_main_v001.o
- .debug_abbrev    0x000107         0xe8 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
- .debug_abbrev    0x0001ef         0xc7 build/default/production/pepin024_lab3_KEYPAD_v001.o
- .debug_abbrev    0x0002b6         0xb4 build/default/production/pepin024_lab3_delay.o
+ .debug_abbrev    0x000000        0x106 build/default/production/pepin024_lab3_main_v001.o
+ .debug_abbrev    0x000106         0xe8 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_abbrev    0x0001ee         0xc7 build/default/production/pepin024_lab3_KEYPAD_v001.o
+ .debug_abbrev    0x0002b5         0xb4 build/default/production/pepin024_lab3_delay.o
 
 .debug_line       0x000000        0x303
  *(.debug_line)
