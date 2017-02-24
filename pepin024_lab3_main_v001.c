@@ -55,5 +55,6 @@ void loop(void){
     if(keyPress > 15)
         keyPress = 14;
     showChar7seg(keyPadMask[keyPress], 0);
+  
     return;
 }
