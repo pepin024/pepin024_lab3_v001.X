@@ -10,6 +10,8 @@
       <itemPath>pepin024_lab3_delay_v002.h</itemPath>
       <itemPath>pepin024_lab3_KEYPAD_v002.h</itemPath>
       <itemPath>pepin024_lab3_KEYPAD_v003.h</itemPath>
+      <itemPath>pepin024_lab3_delay_v003.h</itemPath>
+      <itemPath>pepin024_lab3_SEVENSEGMENT_v002.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -226,7 +228,7 @@
         <property key="codecoverage.outputfile" value=""/>
         <property key="oscillator.auxfrequency" value="120"/>
         <property key="oscillator.auxfrequencyunit" value="Mega"/>
-        <property key="oscillator.frequency" value="1"/>
+        <property key="oscillator.frequency" value="16"/>
         <property key="oscillator.frequencyunit" value="Mega"/>
         <property key="oscillator.rcfrequency" value="250"/>
         <property key="oscillator.rcfrequencyunit" value="Kilo"/>
@@ -549,8 +551,28 @@
         <property key="warningmessagebreakoptions.warningmessages" value="holdstate"/>
       </Simulator>
       <item path="pepin024_lab3_KEYPAD_v001.h" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="pepin024_lab3_KEYPAD_v002.h" ex="true" overriding="false">
+        <C30>
+        </C30>
+        <C30-AR>
+        </C30-AR>
+        <C30-AS>
+        </C30-AS>
+        <C30-LD>
+        </C30-LD>
+        <C30Global>
+        </C30Global>
       </item>
       <item path="pepin024_lab3_delay_v001.h" ex="true" overriding="false">
         <C30>

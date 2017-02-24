@@ -1,7 +1,7 @@
 #include <p24Fxxxx.h>
 #include <xc.h>
-#include "pepin024_lab3_SEVENSEGMENT_v001.h"
-#include "pepin024_lab3_delay_v002.h"
+#include "pepin024_lab3_SEVENSEGMENT_v002.h"
+#include "pepin024_lab3_delay_v003.h"
 #include "pepin024_lab3_KEYPAD_v003.h"
 
 // PIC24FJ64GA002 Configuration Bit Settings
@@ -21,11 +21,13 @@
 #pragma config FCKSM = CSECME      // Clock Switching and Monitor (Clock switching is enabled, 
                                        // Fail-Safe Clock Monitor is enabled)
 #pragma config FNOSC = FRCPLL      // Oscillator Select (Fast RC Oscillator with PLL module (FRCPLL))
+#define NOKEY 255
 
 void loop(void);
 
 
-char lastkey = 0;
+int lastKey = NOKEY;
+char segState[] = {NOKEY, NOKEY};
 char keyPadMask[] = {'1', '2', '3', 'A', '4', '5', '6', 'B', '7', '8', '9', 'C', '#', '0', '*', 'D', 0};
 
 void setup(void) {
@@ -49,12 +51,35 @@ int main(void){
 }
 
 void loop(void){
-    int i=0;
+    
     int keyPress;
     keyPress = scanKeyPad();
-    if(keyPress > 15)
-        keyPress = 16;
-    showChar7seg(keyPadMask[keyPress], 0);
-  
+    if(keyPress != lastKey){
+        delay(2);
+        keyPress = scanKeyPad();
+    }
+    if(keyPress != lastKey){
+        if(lastKey == NOKEY){
+            segState[1] = segState[0];
+            segState[0] = keyPadMask[keyPress];
+        }
+        lastKey = keyPress;                         
+    }
+    
+    int i;
+    for(i=5; i > 0; --i){
+        showChar7seg(segState[1], 1);
+        delay(3);
+        showChar7seg(segState[0], 0);
+        delay(3);
+    }
+     
+    /*
+    showChar7seg('4', 0);
+    delay(2000);
+    showChar7seg('7', 0);
+    delay(2000);
+    */
+    
     return;
 }
