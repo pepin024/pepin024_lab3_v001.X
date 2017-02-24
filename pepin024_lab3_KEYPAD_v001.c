@@ -73,11 +73,13 @@ int scanRow(int row){
         row = 0;
     LATB |= 0xF000;
     LATB &= 0x0FFF + (rowMask[row] << 12);
+    asm("nop");
+    asm("nop");
     int key = PORTA & 0x000F;
     key = colMask[key];
     if(key == NOKEY)
         return NOKEY;
-    return (4*row) + key;
+    return (15 - ((4*row) + key));
     
 }
 

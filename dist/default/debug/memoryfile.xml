@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project>
-  <executable name="dist/default/production/pepin024_lab3_v001.X.production.elf">
+  <executable name="dist/default/debug/pepin024_lab3_v001.X.debug.elf">
     <memory name="data">
       <units>bytes</units>
       <length>8192</length>
-      <used>76</used>
-      <free>8116</free>
+      <used>156</used>
+      <free>8036</free>
     </memory>
     <memory name="program">
       <units>bytes</units>
       <length>65274</length>
-      <used>1575</used>
-      <free>63699</free>
+      <used>1560</used>
+      <free>63714</free>
     </memory>
   </executable>
 </project>
