@@ -26,6 +26,7 @@ void loop(void);
 
 
 int lastkey = 0;
+char keyPadMask[] = {'1', '2', '3', 'A', '4', '5', '6', 'B', '7', '8', '9', 'C', '#', '0', '*'};
 
 void setup(void) {
     CLKDIVbits.RCDIV = 0;
@@ -49,8 +50,10 @@ int main(void){
 
 void loop(void){
     int i=0;
-    int foo = 0;
-    foo = scanRow(0);
-    showChar7seg(i + '0', 0);
+    int keyPress;
+    keyPress = scanKeyPad();
+    if(keyPress > 15)
+        keyPress = 15;
+    showChar7seg(keyPadMask[keyPress], 0);
     return;
 }

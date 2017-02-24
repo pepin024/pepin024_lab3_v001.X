@@ -75,6 +75,19 @@ int scanRow(int row){
     LATB &= 0x0FFF + (rowMask[row] << 12);
     int key = PORTA & 0x000F;
     key = colMask[key];
+    if(key == NOKEY)
+        return NOKEY;
     return (4*row) + key;
     
+}
+
+int scanKeyPad(void){
+    int row = 0;
+    int key = NOKEY;
+    for(row = 0; row < 4; row++){
+        int tempKey = scanRow(row);
+        if(tempKey != NOKEY)
+            key = tempKey;
+    }
+    return key;
 }

@@ -15,6 +15,7 @@ extern "C" {
     void initKeyPad(void);
     void readKeyPadRAW(void);
     int scanRow(int);
+    int scanKeyPad(void);
 
 
 
