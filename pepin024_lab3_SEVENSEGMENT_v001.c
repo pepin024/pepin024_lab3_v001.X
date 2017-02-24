@@ -21,7 +21,8 @@ unsigned char fontTable[] = {
     0b01100001,
     0b01110001,
     0b11111110,
-    0b00000000
+    0b00000000,
+    0b11111111
 };
 
 void init7seg(void){
@@ -50,6 +51,9 @@ void showChar7seg(char myChar, int digit){
     }
     else if(myChar == '#'){
         LATB &= ((fontTable[17] << 2) + 0xF003);
+    }
+    else if(myChar == 0){
+        LATB &= ((fontTable[18] << 2) + 0xF003);
     }
     else
         return;

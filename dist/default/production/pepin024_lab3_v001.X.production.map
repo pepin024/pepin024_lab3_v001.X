@@ -61,11 +61,11 @@ Program Memory  [Origin = 0x200, Length = 0xa9fc]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0xce           0x135  (309)
-.text                        0x2ce               0x282           0x3c3  (963)
-.dinit                       0x550                0x4e            0x75  (117)
-.text                        0x59e                0x7c            0xba  (186)
+.text                        0x2ce               0x29e           0x3ed  (1005)
+.dinit                       0x56c                0x50            0x78  (120)
+.text                        0x5bc                0x7c            0xba  (186)
 
-                 Total program memory used (bytes):          0x627  (1575) 2%
+                 Total program memory used (bytes):          0x654  (1620) 2%
 
 
 Aivt Memory  [Origin = 0x104, Length = 0xfc]
@@ -79,9 +79,9 @@ Data Memory  [Origin = 0x800, Length = 0x2000]
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
 .nbss                        0x800                   0             0x2  (2)
-.data                        0x802                   0            0x4a  (74)
+.data                        0x802                   0            0x4e  (78)
 
-                 Total data memory used (bytes):           0x4c  (76) <1%
+                 Total data memory used (bytes):           0x50  (80) <1%
 
 
 Dynamic Memory Usage
@@ -89,9 +89,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x84c                              0x1fb4  (8116)
+stack                        0x850                              0x1fb0  (8112)
 
-                 Maximum dynamic memory (bytes):         0x1fb4  (8116)
+                 Maximum dynamic memory (bytes):         0x1fb0  (8112)
 
 
 External Symbols in Data Memory (by address):
@@ -100,13 +100,13 @@ External Symbols in Data Memory (by address):
                     0x0802                  _rowMask
                     0x080a                  _colMask
                     0x082a                  _fontTable
-                    0x083c                  _keyPadMask
+                    0x083e                  _keyPadMask
 
 External Symbols in Data Memory (by name):
 
                     0x080a                  _colMask
                     0x082a                  _fontTable
-                    0x083c                  _keyPadMask
+                    0x083e                  _keyPadMask
                     0x0800                  _lastkey
                     0x0802                  _rowMask
 
@@ -123,11 +123,11 @@ External Symbols in Program Memory (by address):
                   0x00040e                  _scanKeyPad
                   0x00043e                  _init7seg
                   0x000464                  _showChar7seg
-                  0x00059e                  _setup
-                  0x0005b0                  _main
-                  0x0005be                  _loop
-                  0x0005e0                  _mSec
-                  0x0005fc                  _delay
+                  0x0005bc                  _setup
+                  0x0005ce                  _main
+                  0x0005dc                  _loop
+                  0x0005fe                  _mSec
+                  0x00061a                  _delay
 
 External Symbols in Program Memory (by name):
 
@@ -136,16 +136,16 @@ External Symbols in Program Memory (by name):
                   0x000252                  __data_init_standard
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x0005fc                  _delay
+                  0x00061a                  _delay
                   0x00043e                  _init7seg
                   0x0002ce                  _initKeyPad
-                  0x0005be                  _loop
-                  0x0005e0                  _mSec
-                  0x0005b0                  _main
+                  0x0005dc                  _loop
+                  0x0005fe                  _mSec
+                  0x0005ce                  _main
                   0x000300                  _readKeyPadRAW
                   0x00040e                  _scanKeyPad
                   0x0003ac                  _scanRow
-                  0x00059e                  _setup
+                  0x0005bc                  _setup
                   0x000464                  _showChar7seg
 
 Memory Configuration
@@ -236,12 +236,12 @@ __CONFIG1
  .debug_abbrev    0x000211        0x102 build/default/production/pepin024_lab3_KEYPAD_v001.o
  .debug_abbrev    0x000313         0xb4 build/default/production/pepin024_lab3_delay.o
 
-.debug_line       0x000000        0x311
+.debug_line       0x000000        0x314
  *(.debug_line)
  .debug_line      0x000000         0xb2 build/default/production/pepin024_lab3_main_v001.o
- .debug_line      0x0000b2         0xce build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
- .debug_line      0x000180         0xe8 build/default/production/pepin024_lab3_KEYPAD_v001.o
- .debug_line      0x000268         0xa9 build/default/production/pepin024_lab3_delay.o
+ .debug_line      0x0000b2         0xd1 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+ .debug_line      0x000183         0xe8 build/default/production/pepin024_lab3_KEYPAD_v001.o
+ .debug_line      0x00026b         0xa9 build/default/production/pepin024_lab3_delay.o
 
 .debug_frame      0x000000        0x184
  *(.debug_frame)
@@ -903,14 +903,14 @@ __c30_signature
  .nbss              0x0800          0x2 build/default/production/pepin024_lab3_main_v001.o
                     0x0800                  _lastkey
 
-.data               0x0802         0x4a
+.data               0x0802         0x4e
  .data              0x0802         0x28 build/default/production/pepin024_lab3_KEYPAD_v001.o
                     0x0802                  _rowMask
                     0x080a                  _colMask
- .data              0x082a         0x12 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+ .data              0x082a         0x14 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
                     0x082a                  _fontTable
- .data              0x083c         0x10 build/default/production/pepin024_lab3_main_v001.o
-                    0x083c                  _keyPadMask
+ .data              0x083e         0x12 build/default/production/pepin024_lab3_main_v001.o
+                    0x083e                  _keyPadMask
 
 .config_JTAGEN    0x00abfe          0x2
  .config_JTAGEN
@@ -919,24 +919,24 @@ __c30_signature
 .config_IESO      0x00abfc          0x2
  .config_IESO     0x00abfc          0x2 build/default/production/pepin024_lab3_main_v001.o
 
-.text             0x0002ce        0x282
+.text             0x0002ce        0x29e
  .text            0x0002ce        0x170 build/default/production/pepin024_lab3_KEYPAD_v001.o
                   0x0002ce                  _initKeyPad
                   0x000300                  _readKeyPadRAW
                   0x0003ac                  _scanRow
                   0x00040e                  _scanKeyPad
- .text            0x00043e        0x112 build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
+ .text            0x00043e        0x12e build/default/production/pepin024_lab3_SEVENSEGMENT_v001.o
                   0x00043e                  _init7seg
                   0x000464                  _showChar7seg
 
-.dinit            0x000550         0x4e
- .dinit           0x000550         0x4e data_init
+.dinit            0x00056c         0x50
+ .dinit           0x00056c         0x50 data_init
 
-.text             0x00059e         0x7c
- .text            0x00059e         0x42 build/default/production/pepin024_lab3_main_v001.o
-                  0x00059e                  _setup
-                  0x0005b0                  _main
-                  0x0005be                  _loop
- .text            0x0005e0         0x3a build/default/production/pepin024_lab3_delay.o
-                  0x0005e0                  _mSec
-                  0x0005fc                  _delay
+.text             0x0005bc         0x7c
+ .text            0x0005bc         0x42 build/default/production/pepin024_lab3_main_v001.o
+                  0x0005bc                  _setup
+                  0x0005ce                  _main
+                  0x0005dc                  _loop
+ .text            0x0005fe         0x3a build/default/production/pepin024_lab3_delay.o
+                  0x0005fe                  _mSec
+                  0x00061a                  _delay
